@@ -9,7 +9,7 @@ FEED_URL = 'https://rpilocator.com/feed/'
 
 # ntfy settings
 NTFY_BASE_URL = 'https://ntfy.sh'
-NTFY_TOPIC = '<your topic here>'
+NTFY_TOPIC = 'sirianni'
 NTFY_PRIORITY = 'default'
 NTFY_EMOJI = 'white_check_mark'
 INITIAL_NOTIFICATION = False
@@ -29,13 +29,13 @@ def formatMessage(entry):
 
 # Send the push/message to all devices connected to ntfy
 def sendMessage(message):
-   
+
     headers = {
             'Title': MESSAGE_TITLE,
             'Priority': NTFY_PRIORITY,
             'Tags': NTFY_EMOJI
     }
-    
+
     try:
         req = requests.post(url=NTFY_BASE_URL + '/' + NTFY_TOPIC, data=message, headers=headers, timeout=20)
     except requests.exceptions.Timeout:
